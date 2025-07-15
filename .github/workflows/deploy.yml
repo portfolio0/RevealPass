@@ -2,7 +2,7 @@ name: Deploy Vite React App to GitHub Pages
 
 on:
   push:
-    branches: [main] # Change to 'master' if your branch is named master
+    branches: [main] # or 'master' if your repo uses that
 
 permissions:
   contents: read
@@ -32,7 +32,7 @@ jobs:
         run: npm run build
 
       - name: Upload build output
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v4 # ✅ use v4 (not v2 or v3)
         with:
           path: dist
 
@@ -46,4 +46,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4 # ✅ latest version
